@@ -187,7 +187,8 @@ Tooling for offensive testing is included **only** for authorized audits, traini
   ```bash
   lb config --distribution trixie --archive-areas "main contrib non-free-firmware" --interactive shell
 
-  ## 🕸️ Special Thanks
+
+## 🕸️ Special Thanks
 
 A heartfelt thanks to the open-source teams behind **Zeroshell NetServices** —  
 my very first Linux network distribution. Although it no longer exists,  
