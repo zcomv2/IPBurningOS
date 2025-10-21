@@ -186,3 +186,17 @@ Tooling for offensive testing is included **only** for authorized audits, traini
 - **Custom ISO build:** `live-build`  
   ```bash
   lb config --distribution trixie --archive-areas "main contrib non-free-firmware" --interactive shell
+
+  ## 🕸️ Special Thanks
+
+A heartfelt thanks to the open-source teams behind **Zeroshell NetServices** —  
+my very first Linux network distribution. Although it no longer exists,  
+its spirit continues to inspire.  
+
+And to **IPFire**, the foundation and inspiration behind **🔥 IPBurningOS** —  
+your dedication to open-source network security made this project possible.  
+
+**Many thanks to all the teams who make this possible.**  
+
+**by Zcom**
+
