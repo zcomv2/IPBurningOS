@@ -181,6 +181,90 @@ Tooling for offensive testing is included **only** for authorized audits, traini
 
 **Tag:** `Aracne-Net-Bug-27` 🕸️ — AI + Red-Team lab for responsible security testing.
 
+## 🔒 IPBurningOS +NVR — Network Video Record Module
+
+**Status:** Active  
+**Author:** Zcom  
+**Subsystem:** IPBurningOS Secure Services  
+**Category:** Surveillance / Data Security  
+
+---
+
+### 🧩 Overview
+
+The **+NVR (Network Video Record)** module extends the IPBurningOS framework with a **private, on-premises video recording system** designed for **WiFi/IP cameras** operating **exclusively inside the administrator’s local network**.
+
+This module integrates **ZoneMinder (GNU)** — a fully open-source video surveillance suite — configured to manage and record video streams from multiple IP/WiFi cameras.
+
+All recordings and log data are stored locally on a **dedicated 4 TB NAS hard drive (WD Red Plus 5400 RPM CMR)** integrated into the system, ensuring **high reliability, low vibration, and 24/7 operation**.
+
+---
+
+### 🧠 System Architecture
+
+| Component | Function | Description |
+|------------|-----------|-------------|
+| **ZoneMinder** | Core NVR Engine | Manages IP/WiFi cameras, records continuous or motion-triggered video streams, supports RTSP, HTTP, and ONVIF protocols. |
+| **Apache + PHP + MySQL** | Web Management Interface | Provides the administration panel accessible through HTTPS (localhost or LAN only). |
+| **WD Red Plus 4 TB NAS HDD** | Storage Device | Dedicated drive for video data and log retention (encrypted filesystem). |
+| **LUKS Encryption Layer** | Data Security | Full-disk encryption ensures all recordings remain protected at rest. |
+| **Crontab Log Rotation** | Data Retention Policy | Automates log and video cleanup every 72 hours according to internal privacy policies. |
+| **Firewall (IPFire/Netfilter)** | Network Isolation | Prevents external access to camera feeds; only local LAN devices may connect. |
+| **OpenVPN / LAN Secure Access** | Remote Admin Access | Optional secure tunnel for the owner to monitor the system remotely, maintaining encryption end-to-end. |
+
+---
+
+### ⚙️ Key Features
+
+- 📹 **Multi-Camera Support** — add and manage several IP/WiFi cameras with independent zones and detection rules.  
+- 🔐 **Private Local Storage** — all recordings remain physically inside the owner’s property.  
+- 🔄 **Automatic Data Rotation** — keeps up to 3 days of recordings, removing older files automatically.  
+- 🧱 **Encrypted Data Layer (LUKS)** — protects video and logs in case of hardware theft.  
+- 🛰️ **Event-Driven Recording** — supports motion-based and continuous modes.  
+- 🖥️ **Web Dashboard** — local HTTPS interface for camera configuration and playback.  
+- ⚡ **Optimized Power and I/O Management** — HDD spin-down control to reduce power use during inactivity.  
+
+---
+
+### 🧰 Software Stack Summary
+
+| Tool | Function | Notes |
+|------|-----------|-------|
+| **ZoneMinder** | NVR management and motion detection | Core recording engine. |
+| **MariaDB/MySQL** | Metadata and event storage | Supports camera configuration and event logs. |
+| **Apache2 / PHP** | Web dashboard and API interface | User-friendly admin panel. |
+| **LUKS / Cryptsetup** | Full-disk encryption for NAS HDD | Secure data-at-rest layer. |
+| **rsyslog / logrotate** | System and event logs | 3-day rotation policy. |
+| **IPFire Integration** | Network segmentation | Restricts camera and admin traffic to internal VLAN. |
+
+---
+
+### 🧩 Legal & Ethical Note
+
+This system is intended **solely for private security and property monitoring** by the owner or administrator.  
+All cameras operate **within the limits of the private network and physical premises**, ensuring full compliance with data protection and privacy regulations.  
+No external or third-party data collection is performed.  
+
+---
+
+### 🧾 Storage & Retention Policy
+
+- **Primary Storage:** `/mnt/nas-cctv` → encrypted 4 TB WD Red Plus HDD.  
+- **Retention:** 72 hours (3 days) automatic rotation.  
+- **Backup (optional):** external encrypted drive or NAS replication (rsync over SSH).  
+- **Logs:** summarized daily reports kept under `/var/log/zoneminder/summary.log`.
+
+---
+
+### 🛡️ Summary
+
+The **IPBurningOS +NVR** module transforms the system into a **personal secure video surveillance node**, combining open-source reliability with strong encryption and ethical privacy standards —  
+fully autonomous, non-cloud, and 100 % under the owner’s control.
+
+> *“Your security, your data, your domain.”*  
+> — **by Zcom**
+
+
 
 ## 🔹 10. Deployment
 - **Custom ISO build:** `live-build`  
